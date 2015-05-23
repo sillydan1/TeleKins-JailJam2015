@@ -6,7 +6,9 @@ public class Movement : MonoBehaviour
     public float moveSpeed = 10;
     private CharacterMotor motor;
     private CharacterController controller;
-    private bool isJumping;
+    private bool isJumping, isLaunching;
+    private float timer, launchDuration, oldJumpHeight;
+    private Vector3 launchVel;
 
     void Start()
     {
@@ -21,10 +23,40 @@ public class Movement : MonoBehaviour
         moveDir += transform.right * hori;
         moveDir *= Time.deltaTime * moveSpeed;
 
-
         motor.inputJump = Input.GetButton("Jump");
-        controller.Move(moveDir);
-        //motor.inputMoveDirection = moveDir;
         
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            isLaunching = true;
+            Debug.Log("Yes");
+        }
+        //motor.inputMoveDirection = moveDir;
+        if(isLaunching)
+        {
+            if(timer < launchDuration)
+            {
+                timer += Time.deltaTime;
+                //controller.Move(launchVel * Time.deltaTime);
+                moveDir += launchVel * Time.deltaTime;
+                launchVel /= 1.05f;
+                motor.jumping.baseHeight = oldJumpHeight;
+            }
+            else
+            {
+                timer = 0;
+                isLaunching = false;
+            }
+        }
+        controller.Move(moveDir);
+    }
+    public void Launch(Vector3 LaunchVelocity, float duration)
+    {
+        launchVel = LaunchVelocity;
+        isLaunching = true;
+        launchDuration = duration;
+        oldJumpHeight = motor.jumping.baseHeight;
+        motor.jumping.baseHeight = 0.1f;
+        motor.inputJump = true;
     }
 }

@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\MyStuff\Scripts\AnimatorScript.cs" />
      <Compile Include="Assets\MyStuff\Scripts\Interactable.cs" />
+     <Compile Include="Assets\MyStuff\Scripts\LaunchPadTrigger.cs" />
      <Compile Include="Assets\MyStuff\Scripts\Library.cs" />
      <Compile Include="Assets\MyStuff\Scripts\MouseLook.cs" />
      <Compile Include="Assets\MyStuff\Scripts\MoveType.cs" />
