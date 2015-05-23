@@ -7,6 +7,8 @@ Project("{525A3426-0920-F56B-DBF6-F26D7AC0D497}") = "TeleKins-JailJam2015", "Ass
 EndProject
 Project("{525A3426-0920-F56B-DBF6-F26D7AC0D497}") = "TeleKins-JailJam2015", "Assembly-CSharp-Editor.csproj", "{DFF267E3-B0F2-FE3A-51EE-FA19A3B2AB7E}"
 EndProject
+Project("{525A3426-0920-F56B-DBF6-F26D7AC0D497}") = "TeleKins-JailJam2015", "Assembly-UnityScript-firstpass.unityproj", "{C2155572-992B-2B1F-EEE5-54334F2BEE7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,11 +27,15 @@ Global
 		{DFF267E3-B0F2-FE3A-51EE-FA19A3B2AB7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFF267E3-B0F2-FE3A-51EE-FA19A3B2AB7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFF267E3-B0F2-FE3A-51EE-FA19A3B2AB7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2155572-992B-2B1F-EEE5-54334F2BEE7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2155572-992B-2B1F-EEE5-54334F2BEE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2155572-992B-2B1F-EEE5-54334F2BEE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2155572-992B-2B1F-EEE5-54334F2BEE7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
+				GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
@@ -48,4 +54,5 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
+
 EndGlobal
