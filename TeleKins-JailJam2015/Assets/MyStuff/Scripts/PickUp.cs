@@ -15,6 +15,8 @@ public class PickUp : MonoBehaviour
     {
         //myBeam = transform.parent.FindChild("BeamPoint").gameObject.GetComponent<LineRenderer>();
         myCam = GetComponent<Camera>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame
