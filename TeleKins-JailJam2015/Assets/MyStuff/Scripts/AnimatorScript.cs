@@ -43,5 +43,8 @@ private AnimatorStateInfo currentBaseState;			// a reference to the current stat
 		if (Input.GetKeyDown(KeyCode.Space)){
 			anim.SetBool("Jump", true);
 		}
+		else {
+			anim.SetBool("Jump", false);
+		}
 	}
 }
