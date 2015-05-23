@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\MyStuff\Scripts\Interactable.cs" />
+    <Compile Include="Assets\MyStuff\Scripts\LaunchPadTrigger.cs" />
     <Compile Include="Assets\MyStuff\Scripts\Library.cs" />
     <Compile Include="Assets\MyStuff\Scripts\MouseLook.cs" />
     <Compile Include="Assets\MyStuff\Scripts\MoveType.cs" />
@@ -147,7 +148,6 @@
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
-    <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

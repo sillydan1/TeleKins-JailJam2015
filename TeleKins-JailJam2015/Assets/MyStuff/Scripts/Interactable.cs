@@ -9,15 +9,20 @@ public class Interactable : MonoBehaviour
     public float speed;
     private bool isTriggered;
     private float triggerTimer;
-    private bool playerIsIn;
     public float timerTime = 2;
+    private Movement playerMove;
+    private LaunchPadTrigger myTrigger;
 
 	// Use this for initialization
 	void Start () 
     {
         isTriggered = false;
         triggerTimer = 0;
-        playerIsIn = false;
+        playerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        if(myType == MoveType.triggered)
+        {
+            myTrigger = transform.FindChild("Trigger").GetComponent<LaunchPadTrigger>();
+        }
 	}
 	
 	// Update is called once per frame
@@ -28,28 +33,17 @@ public class Interactable : MonoBehaviour
             triggerTimer += Time.deltaTime;
             if(triggerTimer >= timerTime)
             {
-                if(playerIsIn)
+                if(myTrigger.IsPlayerIn)
                 {
                     //Give force to the player in the desired direction
-
+                    playerMove.Launch(myDir.normalized * speed, 1);
+                    Debug.Log("JUMP!");
+                    triggerTimer = 0;
+                    isTriggered = false;
                 }
             }
         }
 	}
-    void OnCollisionEnter(Collision intruder)
-    {
-        if(intruder.collider.tag == "Player")
-        {
-            playerIsIn = true;
-        }
-    }
-    void OnCollisionExit(Collision extruder)
-    {
-        if (extruder.collider.tag == "Player")
-        {
-            playerIsIn = false;
-        }
-    }
     public void MoveTowards(Vector3 moveTo)
     {
         if (myType == MoveType.lockedAxis)
