@@ -36,7 +36,7 @@ public class Interactable : MonoBehaviour
                 if(myTrigger.IsPlayerIn)
                 {
                     //Give force to the player in the desired direction
-                    playerMove.Launch(myDir.normalized * speed, 1);
+                    playerMove.Launch(myDir.normalized * speed, 3);
                     Debug.Log("JUMP!");
                     triggerTimer = 0;
                     isTriggered = false;

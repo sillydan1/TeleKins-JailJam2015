@@ -6,21 +6,21 @@ public class PickUp : MonoBehaviour
     private Camera myCam;
     public float maxDist = 10;
     public float pushForce = 2;
-    private LineRenderer myBeam;
+    public LineRenderer myBeam;
     private bool isPulling;
     private Interactable myTarget;
     private Vector3 hitoffset;
 	// Use this for initialization
 	void Start () 
     {
-        myBeam = transform.parent.FindChild("BeamPoint").gameObject.GetComponent<LineRenderer>();
+        //myBeam = transform.parent.FindChild("BeamPoint").gameObject.GetComponent<LineRenderer>();
         myCam = GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-	    if(Input.GetButtonDown("Fire1"))
+	    if(Input.GetButtonDown("Fire2"))
         {
             Ray myRay = myCam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             RaycastHit hit;
@@ -30,7 +30,11 @@ public class PickUp : MonoBehaviour
                 {
                     hitoffset = hit.transform.position - hit.point;
                     myBeam.SetPosition(0, myBeam.transform.position);
-                    myBeam.SetPosition(1, hit.transform.position);
+                    float midLength = Vector3.Distance(myBeam.transform.position, hit.transform.position) / 2;
+                    Vector3 midPoint = myBeam.transform.position + (transform.forward.normalized * midLength);
+                    myBeam.SetPosition(1, midPoint);
+
+                    myBeam.SetPosition(2, hit.transform.position);
                     myTarget = hit.transform.GetComponent<Interactable>();
                     myTarget.MoveTowards(transform.position + (transform.forward * 0.05f));
                     isPulling = true;
@@ -44,7 +48,7 @@ public class PickUp : MonoBehaviour
             }
             
         }
-        else if(Input.GetButtonUp("Fire1"))
+        else if(Input.GetButtonUp("Fire2"))
         {
             StopPulling();
         }
@@ -57,17 +61,23 @@ public class PickUp : MonoBehaviour
                 {
                     myTarget.MoveTowards(transform.position + (transform.forward * maxDist));
                     myBeam.SetPosition(0, myBeam.transform.position);
-                    myBeam.SetPosition(1, myTarget.transform.position + hitoffset);
+                    float midLength = Vector3.Distance(myBeam.transform.position, myTarget.transform.position) / 2;
+                    Vector3 midPoint = myBeam.transform.position + (transform.forward.normalized * midLength);
+                    myBeam.SetPosition(1, midPoint);
+                    myBeam.SetPosition(2, myTarget.transform.position + hitoffset);
                 }
                 else
                 {
                     myTarget.MoveTowards(transform.position + (transform.forward * maxDist));
                     myBeam.SetPosition(0, myBeam.transform.position);
-                    myBeam.SetPosition(1, myTarget.transform.position);
+                    float midLength = Vector3.Distance(myBeam.transform.position, myTarget.transform.position) / 2;
+                    Vector3 midPoint = myBeam.transform.position + (transform.forward.normalized * midLength);
+                    myBeam.SetPosition(1, midPoint);
+                    myBeam.SetPosition(2, myTarget.transform.position);
                 }
             }
 
-            if(Input.GetButtonDown("Fire2"))
+            if(Input.GetButtonDown("Fire1"))
             {
                 if(myTarget.myType == MoveType.freeMovement)
                 {
@@ -83,6 +93,7 @@ public class PickUp : MonoBehaviour
         isPulling = false;
         myBeam.SetPosition(0, Vector3.zero);
         myBeam.SetPosition(1, Vector3.zero);
+        myBeam.SetPosition(2, Vector3.zero);
         if (myTarget != null)
         {
             if (myTarget.myType == MoveType.freeMovement)
