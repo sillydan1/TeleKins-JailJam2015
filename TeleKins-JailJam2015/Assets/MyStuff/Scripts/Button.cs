@@ -15,14 +15,14 @@ public class Button : MonoBehaviour
 
 	void OnTriggerEnter(Collider intruder)
     {
-        if(intruder.transform.tag == "Cube")
+        if(intruder.transform.tag == "Interactable")
         {
             open = true;
         }
     }
     void OnTriggerExit(Collider intruder)
     {
-        if (intruder.transform.tag == "Cube")
+        if (intruder.transform.tag == "Interactable")
         {
             open = false;
         }
