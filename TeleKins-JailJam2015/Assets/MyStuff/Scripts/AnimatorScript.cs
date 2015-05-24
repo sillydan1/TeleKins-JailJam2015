@@ -17,24 +17,24 @@ private AnimatorStateInfo currentBaseState;			// a reference to the current stat
 	// Update is called once per frame
 	void FixedUpdate () {
 	
-		if (Input.GetMouseButtonDown(1)){
+		if (Input.GetMouseButtonDown(0)){
 			anim.SetBool("Pull", true);
 			anim.SetBool("Hover", true);
 		}
 		else {
 			anim.SetBool("Pull", false);
 		}
-		if (Input.GetMouseButtonUp(1)){
+		if (Input.GetMouseButtonUp(0)){
 			anim.SetBool("Hover", false);
 		}
-		if (Input.GetMouseButtonDown(0) && anim.GetBool("Hover") == true) {
+		if (Input.GetMouseButtonDown(1) && anim.GetBool("Hover") == true) {
 			anim.SetBool("Push", true);
 		}
 		else {
 			anim.SetBool("Push", false);
 		}
 
-		if (Input.GetMouseButtonDown(0)){
+		if (Input.GetMouseButtonDown(1)){
 			anim.SetBool("Push", true);
 		}
 		else {
