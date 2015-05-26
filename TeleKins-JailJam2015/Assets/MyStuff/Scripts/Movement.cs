@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour
                 timer += Time.deltaTime;
                 //controller.Move(launchVel * Time.deltaTime);
                 moveDir += launchVel * Time.deltaTime;
-                moveDir += new Vector3(0, -0.2f, 0);
+                moveDir += new Vector3(0, -1.98f, 0) * Time.deltaTime;
                 launchVel /= 1.03f;
                 motor.jumping.baseHeight = oldJumpHeight;
             }
